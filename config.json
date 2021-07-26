@@ -5,7 +5,7 @@
     "permissions": [
         "redcap_survey_page_top"
     ],
-    "framework-version": 3,
+    "framework-version": 6,
     "authors": [
         {
             "name": "Aidan Wilson",

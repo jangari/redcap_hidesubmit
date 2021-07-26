@@ -1,10 +1,11 @@
 {
     "name": "HIDESUBMIT Action Tag",
     "namespace": "INTERSECT\\HideSubmit",
-    "description": "Adds an action tag @HIDESUBMIT, which can be used in conjuction with branching logic to hide the submit button. When any field containing this action tag is visible on a survey due to branching logic, the Submit or Next Page button is removed. If all @HIDESUBMIT fields are hidden, the submit button becomes visible again. This allows users to easily control survey submission using familiar branching logic.",
+    "description": "Allows users to conditionally hide the Submit/Next Page button using an action tag @HIDESUBMIT. If the action tag is on any field that is visible on the current page due to branching logic, the Submit/Next Page button is hidden.",
     "permissions": [
         "redcap_survey_page_top"
     ],
+    "framework-version": 3,
     "authors": [
         {
             "name": "Aidan Wilson",
@@ -13,6 +14,6 @@
         }
     ],
     "compatibility": {
-        "redcap-version-min": "8.0.3"
+        "redcap-version-min": "9.1.1"
     }
 }

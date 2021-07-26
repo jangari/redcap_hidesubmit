@@ -1,14 +1,14 @@
 # HIDESUBMIT Action Tag
 
-Adds an action tag @HIDESUBMIT, which can be used in conjuction with branching logic to hide the submit button. When any field containing this action tag is visible on a survey due to branching logic, the Submit or Next Page button is removed. If all @HIDESUBMIT fields are hidden, the submit button becomes visible again. This allows users to easily control survey submission using familiar branching logic.
+This REDCap External Module allows users to conditionally hide the Submit/Next Page button using an action tag @HIDESUBMIT. If the action tag is on any field that is visible on the current page due to branching logic, the Submit/Next Page button is hidden.
 
 The intention is that this action tag is used on descriptive text fields in which the respondent is informed that they cannot continue due to some reason. For example, a user could create a descriptive text field that shows a warning message such as "You appear to have missed some questions!", and use branching logic to display this field if any of the required fields on the page are empty. As a result of the @HIDESUBMIT action tag, the presence of this descriptive text field will prevent the submit button being displayed.
 
-![alt text](img/hidesubmit_readme_1.png)
+![Submit button hidden](img/hidesubmit_readme_1.png)
 
-Causing all descriptive text fields with @HIDESUBMIT to disappear (according to their branching logic) will allow the submit button to become visible again, which takes place immediately.
+Once all descriptive text fields with @HIDESUBMIT are no longer visible (according to their branching logic), the submit button immediately becomes visible again.
 
-![alt text](img/hidesubmit_readme_2.png)
+![Submit button visible](img/hidesubmit_readme_2.png)
 
 ## Setup & Configuration
 
@@ -53,10 +53,10 @@ Multiple @HIDESUBMIT fields are also possible. The submit button will be hidden 
 
 ## Acknowledgements
 
-This is my first attempt at a REDCap External Module, and I borrowed heavily from other developers including Andy Martin, Ekin Tertemiz, Günther Rezniczek, as well as an earlier hook by Dimitar Dimitrov. I also drew on help from Luke Stevens. I am grateful to each of these people for their help, whether they knew they were providing it or not.
+This is my first attempt at a REDCap External Module, and I borrowed heavily from other developers including Andy Martin, Ekin Tertemiz, Günther Rezniczek, as well as an earlier hook by Bob Gorczyca. I also drew on help with JavaScript from Luke Stevens, who also suggested the general design of this module.
 
 ## Changelog
 
-Version | Description
-------- | --------------------
-v1.0.0  | Initial release.
+| Version | Description |
+| ------- | -------------------- |
+| v1.0.0  | Initial release. |

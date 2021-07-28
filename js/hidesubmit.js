@@ -1,4 +1,4 @@
-$(window).on("load", function(){
+$(function(){
 
     // The targetFields array should be defined by the PHP script
     // based on the fields in the current instrument that contain
@@ -15,8 +15,20 @@ $(window).on("load", function(){
         });
         if (hide > 0) {
             $('button[name="submit-btn-saverecord"]').hide();
+            $('button[id="submit-btn-savecontinue"]').hide();
+            $('button[id="submit-btn-dropdown"]').hide();
+            $('button[id="submit-btn-savenextrecord"]').hide();
+            $('button[id="submit-btn-savenextform"]').hide();
+            $('button[id="submit-btn-savecompresp"]').hide();
+            $('button[id="submit-btn-saveexitrecord"]').hide();
         } else {
             $('button[name="submit-btn-saverecord"]').show();
+            $('button[id="submit-btn-savecontinue"]').show();
+            $('button[id="submit-btn-dropdown"]').show();
+            $('button[id="submit-btn-savenextrecord"]').show();
+            $('button[id="submit-btn-savenextform"]').show();
+            $('button[id="submit-btn-savecompresp"]').show();
+            $('button[id="submit-btn-saveexitrecord"]').show();
         };
     };
 

@@ -1,8 +1,8 @@
-# HIDESUBMIT Action Tag
+# HIDESUBMIT Action Tags
 
-This REDCap External Module allows users to conditionally hide the Submit/Next Page button using an action tag @HIDESUBMIT. If the action tag is on any field that is visible on the current page due to branching logic, the Submit/Next Page button is hidden.
+This REDCap External Module allows users to conditionally hide the Submit/Next Page buttons on forms and/or surveys using action tags @HIDESUBMIT, @HIDESUBMIT-FORM and @HIDESUBMIT-SURVEY. If the relevant action tag is on any field that is visible on the current page due to branching logic, the Submit/Next Page button is hidden.
 
-The intention is that this action tag is used on descriptive text fields in which the respondent is informed that they cannot continue due to some reason. For example, a user could create a descriptive text field that shows a warning message such as "You appear to have missed some questions!", and use branching logic to display this field if any of the required fields on the page are empty. As a result of the @HIDESUBMIT action tag, the presence of this descriptive text field will prevent the submit button being displayed.
+The intention is that these action tags are used on descriptive text fields in which the respondent is informed that they cannot continue due to some reason. For example, a user could create a descriptive text field that shows a warning message such as "You appear to have missed some questions!", and use branching logic to display this field if any of the required fields on the page are empty. As a result of the @HIDESUBMIT action tags, the presence of this descriptive text field will prevent the submit button being displayed.
 
 ![Submit button hidden](img/hidesubmit_readme_1.png)
 

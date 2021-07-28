@@ -49,8 +49,7 @@ class HideSubmit extends \ExternalModules\AbstractExternalModule {
             echo "targetFields.push('". $targetFields[$i] ."');";
         }
         echo "</script>";
-        echo "<script>console.log(targetFields);</script>";
-        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "></script>";
+        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "\"/></script>";
     }
 
     function redcap_data_entry_form_top($project_id, $record, $instrument, $event_id, $group_id, $repeat_instance)
@@ -68,22 +67,13 @@ class HideSubmit extends \ExternalModules\AbstractExternalModule {
 
         // Join the two arrays returning all fields with either tag
         $allFields = array_unique(array_merge((array)$fields,(array)$fieldsForm));
-        /* print "<pre>All fields:<br/>"; */
-        /* print_r($allFields); */
-        /* print "</pre>"; */
 
         // Get the fields from the current instrument
         $currInstrumentFields = REDCap::getFieldNames($instrument);
-        /* print "<pre>Current instrument:<br/>"; */
-        /* print_r($currInstrumentFields); */
-        /* print "</pre>"; */
 
         // Compute the intersection of both those arrays to only return
         // fields with the action tag in the current instrument.
         $targetFields = array_values(array_intersect((array)$allFields, (array)$currInstrumentFields));
-        /* print "<pre>target fields:<br/>"; */
-        /* print_r($targetFields); */
-        /* print "</pre>"; */
 
         // Don't bother if there aren't any fields
         if (count($targetFields) === 0) { 
@@ -97,7 +87,6 @@ class HideSubmit extends \ExternalModules\AbstractExternalModule {
             echo "targetFields.push('". $targetFields[$i] ."');";
         }
         echo "</script>";
-        echo "<script>console.log(targetFields);</script>";
-        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "></script>";
+        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "\"></script>";
     }
 }

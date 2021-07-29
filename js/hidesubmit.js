@@ -21,6 +21,7 @@ $(function(){
             $('button[id="submit-btn-savenextform"]').hide();
             $('button[id="submit-btn-savecompresp"]').hide();
             $('button[id="submit-btn-saveexitrecord"]').hide();
+            $('button[id="submit-btn-placeholder"]').hide();
         } else {
             $('button[name="submit-btn-saverecord"]').show();
             $('button[id="submit-btn-savecontinue"]').show();
@@ -29,6 +30,7 @@ $(function(){
             $('button[id="submit-btn-savenextform"]').show();
             $('button[id="submit-btn-savecompresp"]').show();
             $('button[id="submit-btn-saveexitrecord"]').show();
+            $('button[id="submit-btn-placeholder"]').show();
         };
     };
 

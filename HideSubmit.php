@@ -9,9 +9,6 @@ class HideSubmit extends \ExternalModules\AbstractExternalModule {
         // https://community.projectredcap.org/questions/32001/custom-action-tags-or-module-parameters.html
         if (!class_exists('\Stanford\Utility\ActionTagHelper')) include_once('classes/ActionTagHelper.php');
         $action_tag_results = ActionTagHelper::getActionTags($tag);
-        /* print "<pre>From tag helper function:<br/>"; */
-        /* print_r($action_tag_results); */
-        /* print "</pre>"; */
         return $action_tag_results;
     }
 

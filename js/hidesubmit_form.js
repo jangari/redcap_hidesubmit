@@ -16,18 +16,24 @@ $(document).ready(function(){
             });
             if (hide > 0) {
                 $('button[name="submit-btn-saverecord"]').hide();
-                if($('button[name="submit-btn-saverepeat"]').length){
-                    $('button[name="submit-btn-saverepeat"]').hide();
-                    $('button[name="submit-btn-saverepeat"]').parent().prev().hide();
-                    $('button[name="submit-btn-saverepeat"]').parent().next().hide();
-                };
+                $('button[id="submit-btn-savecontinue"]').hide();
+                $('button[id="submit-btn-dropdown"]').hide();
+                $('button[id="submit-btn-savenextrecord"]').hide();
+                $('button[id="submit-btn-savenextform"]').hide();
+                $('button[id="submit-btn-savecompresp"]').hide();
+                $('button[id="submit-btn-saveexitrecord"]').hide();
+                $('button[id="submit-btn-placeholder"]').hide();
+                $('button[id="submit-btn-savenextinstance"]').hide();
             } else {
                 $('button[name="submit-btn-saverecord"]').show();
-                if($('button[name="submit-btn-saverepeat"]').length){
-                    $('button[name="submit-btn-saverepeat"]').show();
-                    $('button[name="submit-btn-saverepeat"]').parent().prev().show();
-                    $('button[name="submit-btn-saverepeat"]').parent().next().show();
-                };
+                $('button[id="submit-btn-savecontinue"]').show();
+                $('button[id="submit-btn-dropdown"]').show();
+                $('button[id="submit-btn-savenextrecord"]').show();
+                $('button[id="submit-btn-savenextform"]').show();
+                $('button[id="submit-btn-savecompresp"]').show();
+                $('button[id="submit-btn-saveexitrecord"]').show();
+                $('button[id="submit-btn-placeholder"]').show();
+                $('button[id="submit-btn-savenextinstance"]').show();
             };
         };
 

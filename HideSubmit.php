@@ -84,6 +84,6 @@ class HideSubmit extends \ExternalModules\AbstractExternalModule {
             echo "targetFields.push('". $targetFields[$i] ."');";
         }
         echo "</script>";
-        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "\"></script>";
+        echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit_form.js'). "\"></script>";
     }
 }

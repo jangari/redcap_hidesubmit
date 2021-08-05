@@ -48,7 +48,7 @@ public function redcap_every_page_before_render($project_id) {
     function getTags($tag) {
         // This is straight out of Andy Martin's example post on this:
         // https://community.projectredcap.org/questions/32001/custom-action-tags-or-module-parameters.html
-        if (!class_exists('\Stanford\Utility\ActionTagHelper')) include_once('classes/ActionTagHelper.php');
+        if (!class_exists('INTERSECT\HideSubmit\ActionTagHelper')) include_once('classes/ActionTagHelper.php');
         $action_tag_results = ActionTagHelper::getActionTags($tag);
         return $action_tag_results;
     }

@@ -1,7 +1,7 @@
 {
-    "name": "HIDESUBMIT Action Tag",
+    "name": "HIDESUBMIT Action Tags",
     "namespace": "INTERSECT\\HideSubmit",
-    "description": "Adds action tags @HIDESUBMIT, @HIDESUBMIT-SURVEY and @HIDESUBMIT-FORM, which allow users to conditionally hide the Submit/Next Page button/s on surveys and/or forms using. If the action tag is on any field that is visible on the current page due to branching logic, the Submit/Next Page buttons are hidden.",
+    "description": "Allows users to conditionally hide various Submit/Save/Next instance buttons on surveys and/or data entry forms using Action Tags and branching logic.",
     "permissions": [
         "redcap_survey_page_top",
         "redcap_data_entry_form_top",

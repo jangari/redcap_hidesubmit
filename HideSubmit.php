@@ -5,10 +5,16 @@ use \REDCap as REDCap;
 class HideSubmit extends \ExternalModules\AbstractExternalModule {
 
 protected static $Tags = array(
-            '@HIDESUBMIT' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the Submit or Next Page button on a survey <em>and</em> all Save record buttons on a data entry form <em>if the field is visible due to branching logic</em>. <br/>Typically this action tag would be added to a descriptive text field that is displayed when some condition should prevent the respondent from submitting, or prevent the user from saving. E.g., \'Required fields missing!\' or \'Age must be greater than 18 years to continue\'.'),
-            '@HIDESUBMIT-FORM' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides all Save record buttons on a data entry form <em>if the field is visible due to branching logic</em>. <br/>Typically this action tag would be added to a descriptive text field that is displayed when some condition should prevent the respondent from submitting, or prevent the user from saving. E.g., \'Required fields missing!\' or \'Age must be greater than 18 years to continue\'.'),
-            '@HIDESUBMIT-SURVEY' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the Submit or Next Page button on a survey <em>if the field is visible due to branching logic</em>. <br/>Typically this action tag would be added to a descriptive text field, and branched on some logic that should prevent the user from submitting the survey or saving the record. E.g., \'Required fields missing!\' or \'Age must be greater than 18 years to continue\'.'),
-        );
+    '@HIDESUBMIT' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides all save buttons on data entry forms and both the Submit/Next Page button and \'Take this survey again\' button on surveys <em>if the field is visible due to branching logic</em>.'),
+    '@HIDESUBMIT-FORM' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides all save buttons on data entry forms <em>if the field is visible due to branching logic</em>.'), 
+    '@HIDESUBMIT-SURVEY' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the Submit/Next Page button and the \'Take this survey again\' button on surveys <em>if the field is visible due to branching logic</em>.'),
+    '@HIDESUBMITONLY' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides all save buttons on data entry forms except for \'Save & Add New Instance\', and the Submit/Next Page button on surveys <em>if the field is visible due to branching logic</em>.'), 
+    '@HIDESUBMITONLY-FORM' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides all save buttons except for \'Save & Go To Next Instance\' on data entry forms <em>if the field is visible due to branching logic</em>.'),
+    '@HIDESUBMITONLY-SURVEY' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the Submit/Next Page button on surveys <em>if the field is visible due to branching logic</em>.'),
+    '@HIDEREPEAT' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the \'Save & Go To Next Instance\' button on data entry forms and the \'Take this survey again\' button on surveys <em>if the field is visible due to branching logic</em>.'), 
+    '@HIDEREPEAT-FORM' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the \'Save & Go To Next Instance\' button on data entry forms <em>if the field is visible due to branching logic</em>.'), 
+    '@HIDEREPEAT-SURVEY' => array('description'=>'HIDESUBMIT Action Tags<br/>Hides the \'Take this survey again\' button on surveys <em>if the field is visible due to branching logic</em>.'), 
+);
 
 protected function makeTagTR($tag, $description) {
                 global $isAjax, $lang;
@@ -53,38 +59,52 @@ public function redcap_every_page_before_render($project_id) {
         return $action_tag_results;
     }
 
-    function redcap_survey_page_top($project_id, $record, $instrument, $event_id, $group_id, $survey_hash, $response_id, $repeat_instance)
-    {
-        // Tag to watch for
-        $tag = "@HIDESUBMIT";
-        $tag_survey = "@HIDESUBMIT-SURVEY";
+    function redcap_survey_page_top($project_id, $record, $instrument, $event_id, $group_id, $survey_hash, $response_id, $repeat_instance) {
 
-        // Get an array of fields that contain either tag
-        $actionTags = $this->getTags($tag);
-        $fields = array_keys($actionTags[$tag]);
-        $actionTagsSurvey = $this->getTags($tag_survey);
-        $fieldsSurvey = array_keys($actionTagsSurvey[$tag_survey]);
-
-        // Join the two arrays returning all fields with either tag
-        $allFields = array_unique(array_merge((array)$fields,(array)$fieldsSurvey));
-
-        // Get the fields from the current instrument
+        // Get array of fields in current instruments
         $currInstrumentFields = REDCap::getFieldNames($instrument);
 
-        // Compute the intersection of both those arrays to only return
-        // fields with the action tag in the current instrument.
-        $targetFields = array_values(array_intersect((array)$allFields, (array)$currInstrumentFields));
+        // Begin Submit block
+        $hideSubmitTags = array("@HIDESUBMIT","@HIDESUBMIT-SURVEY","@HIDESUBMITONLY","@HIDESUBMITONLY-SURVEY");
+        $hideSubmitFields = array();
 
-        // Don't bother if there aren't any fields
-        if (count($targetFields) === 0) { 
+        foreach ($hideSubmitTags as $tag){
+            $fields = $this->getTags($tag);
+            $fields = array_keys($fields[$tag]);
+            $hideSubmitFields = array_merge((array)$hideSubmitFields,(array)$fields); 
+        };
+
+        $hideSubmitFields = array_values(array_intersect((array)$hideSubmitFields, (array)$currInstrumentFields));
+        // End Submit block
+
+        // Begin Repeat block
+        $hideRepeatTags = array("@HIDESUBMIT","@HIDESUBMIT-SURVEY","@HIDEREPEAT","@HIDEREPEAT-SURVEY");
+        $hideRepeatFields = array();
+
+        foreach ($hideRepeatTags as $tag){
+            $fields = $this->getTags($tag);
+            $fields = array_keys($fields[$tag]);
+            $hideRepeatFields = array_merge((array)$hideRepeatFields,(array)$fields); 
+        };
+
+        $hideRepeatFields = array_values(array_intersect((array)$hideRepeatFields, (array)$currInstrumentFields));
+        // End Repeat block
+
+        // Decide whether to continue
+        if (count($hideSubmitFields) + count($hideRepeatFields) === 0) { 
             return; 
         }
 
         // Create a JS array to feed into our JS script
-        echo "<script>const targetFields = [];";
-        for ($i = 0; $i < count($targetFields); $i++){
+        echo "<script>const hideSubmitFields = [];";
+        for ($i = 0; $i < count($hideSubmitFields); $i++){
             // Push each field to the JS array
-            echo "targetFields.push('". $targetFields[$i] ."');";
+            echo "hideSubmitFields.push('". $hideSubmitFields[$i] ."');";
+        }
+        echo "const hideRepeatFields = [];";
+        for ($i = 0; $i < count($hideRepeatFields); $i++){
+            // Push each field to the JS array
+            echo "hideRepeatFields.push('". $hideRepeatFields[$i] ."');";
         }
         echo "</script>";
         echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit.js'). "\"/></script>";
@@ -92,37 +112,50 @@ public function redcap_every_page_before_render($project_id) {
 
     function redcap_data_entry_form_top($project_id, $record, $instrument, $event_id, $group_id, $repeat_instance)
     {
-        /* print "Working?"; */
-        // Tag to watch for
-        $tag = "@HIDESUBMIT";
-        $tag_form = "@HIDESUBMIT-FORM";
-
-        // Get an array of fields that contain either tag
-        $actionTags = $this->getTags($tag);
-        $fields = array_keys($actionTags[$tag]);
-        $actionTagsForm = $this->getTags($tag_form);
-        $fieldsForm = array_keys($actionTagsForm[$tag_form]);
-
-        // Join the two arrays returning all fields with either tag
-        $allFields = array_unique(array_merge((array)$fields,(array)$fieldsForm));
-
-        // Get the fields from the current instrument
+        // Get array of fields in current instruments
         $currInstrumentFields = REDCap::getFieldNames($instrument);
 
-        // Compute the intersection of both those arrays to only return
-        // fields with the action tag in the current instrument.
-        $targetFields = array_values(array_intersect((array)$allFields, (array)$currInstrumentFields));
+        // Begin Submit block
+        $hideSubmitTags = array("@HIDESUBMIT","@HIDESUBMIT-FORM","@HIDESUBMITONLY","@HIDESUBMITONLY-FORM");
+        $hideSubmitFields = array();
 
-        // Don't bother if there aren't any fields
-        if (count($targetFields) === 0) { 
+        foreach ($hideSubmitTags as $tag){
+            $fields = $this->getTags($tag);
+            $fields = array_keys($fields[$tag]);
+            $hideSubmitFields = array_merge((array)$hideSubmitFields,(array)$fields); 
+        };
+
+        $hideSubmitFields = array_values(array_intersect((array)$hideSubmitFields, (array)$currInstrumentFields));
+        // End Submit block
+
+        // Begin Repeat block
+        $hideRepeatTags = array("@HIDESUBMIT","@HIDESUBMIT-FORM","@HIDEREPEAT","@HIDEREPEAT-FORM");
+        $hideRepeatFields = array();
+
+        foreach ($hideRepeatTags as $tag){
+            $fields = $this->getTags($tag);
+            $fields = array_keys($fields[$tag]);
+            $hideRepeatFields = array_merge((array)$hideRepeatFields,(array)$fields); 
+        };
+
+        $hideRepeatFields = array_values(array_intersect((array)$hideRepeatFields, (array)$currInstrumentFields));
+        // End Repeat block
+
+        // Decide whether to continue
+        if (count($hideSubmitFields) + count($hideRepeatFields) === 0) { 
             return; 
         }
 
         // Create a JS array to feed into our JS script
-        echo "<script>const targetFields = [];";
-        for ($i = 0; $i < count($targetFields); $i++){
+        echo "<script>const hideSubmitFields = [];";
+        for ($i = 0; $i < count($hideSubmitFields); $i++){
             // Push each field to the JS array
-            echo "targetFields.push('". $targetFields[$i] ."');";
+            echo "hideSubmitFields.push('". $hideSubmitFields[$i] ."');";
+        }
+        echo "const hideRepeatFields = [];";
+        for ($i = 0; $i < count($hideRepeatFields); $i++){
+            // Push each field to the JS array
+            echo "hideRepeatFields.push('". $hideRepeatFields[$i] ."');";
         }
         echo "</script>";
         echo "<script type=\"text/javascript\" src=\"" . $this->getUrl('js/hidesubmit_form.js'). "\"></script>";

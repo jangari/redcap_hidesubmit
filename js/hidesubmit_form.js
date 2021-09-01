@@ -1,5 +1,24 @@
 $(document).ready(function(){
     $(function(){
+
+        // Start by hiding everything immediately to cut down on any lag.
+        // If they need to be, they will be shown later.
+        $('button[name="submit-btn-saverecord"]').hide();
+        $('button[id="submit-btn-savecontinue"]').hide();
+        $('button[id="submit-btn-savenextrecord"]').hide();
+        $('button[id="submit-btn-savenextform"]').hide();
+        $('button[id="submit-btn-savecompresp"]').hide();
+        $('button[id="submit-btn-saveexitrecord"]').hide();
+        $('button[id="submit-btn-placeholder"]').hide();
+        $('a[id="submit-btn-savenextrecord"]').hide();
+        $('a[id="submit-btn-savenextform"]').hide();
+        $('a[id="submit-btn-savecompresp"]').hide();
+        $('a[id="submit-btn-saveexitrecord"]').hide();
+        $('a[id="submit-btn-savecontinue"]').hide();
+        $('button[id="submit-btn-dropdown"]').hide();
+        $('button[id="submit-btn-savenextinstance"]').hide();
+        $('a[id="submit-btn-savenextinstance"]').hide();
+
         // The targetFields array should be defined by the PHP script
         // based on the fields in the current instrument that contain
         // the @HIDESUBMIT action tag.

@@ -1,12 +1,18 @@
 $(document).ready(function(){
     $(function(){
 
+        // Start by hiding everything immediately to cut down on any lag.
+        // If they need to be, they will be shown later.
+        $('button[name="submit-btn-saverecord"]').hide();
+        $('button[name="submit-btn-saverepeat"]').hide();
+        $('button[name="submit-btn-saverepeat"]').parent().prev().hide();
+        $('button[name="submit-btn-saverepeat"]').parent().next().hide();
+
         // The targetFields array should be defined by the PHP script
         // based on the fields in the current instrument that contain
         // the @HIDESUBMIT action tag.
         // hideSubmitFields = ['missed_error', 'age_error'];
         // hideRepeatFields = ['repeathidden'];
-
 
         function hideBtn(hideSubmitFields,hideRepeatFields) {
             // This is the main function that hides the submit button

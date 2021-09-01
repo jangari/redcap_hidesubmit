@@ -101,3 +101,4 @@ This is my first attempt at a REDCap External Module, and I borrowed heavily fro
 | v2.0.0  | Adds support for forms as well as surveys.                                                            |
 | v2.1.0  | Adds documentation to Action Tag dialogue. Adds support for hiding survey repeat button.              |
 | v3.0.0  | Adds support for distinguishing between submit and new instance buttons, and thus 6 more action tags. |
+| v3.0.1  | Performance improvement. Buttons are all hidden immediately, and reshown if needed.                   |

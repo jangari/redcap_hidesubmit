@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Aidan"
+  given-names: "Wilson"
+  orcid: "https://orcid.org/0000-0001-9858-5470"
+title: "HIDESUBMIT Action Tags"
+version: 3.0.1
+date-released: 2021-07-26
+url: "https://github.com/jangari/redcap_hidesubmit"

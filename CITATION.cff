@@ -5,6 +5,6 @@ authors:
   given-names: "Aidan"
   orcid: "https://orcid.org/0000-0001-9858-5470"
 title: "HIDESUBMIT Action Tags"
-version: 3.0.1
+doi: 10.5281/zenodo.5728675
 date-released: 2021-07-26
 url: "https://github.com/jangari/redcap_hidesubmit"

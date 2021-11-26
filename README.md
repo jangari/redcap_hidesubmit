@@ -1,5 +1,7 @@
 # HIDESUBMIT Action Tags
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5728675.svg)](https://doi.org/10.5281/zenodo.5728675)
+
 This REDCap External Module allows users to conditionally hide various Submit/Save/Next instance buttons on surveys and/or data entry forms using Action Tags and branching logic.
 
 The intention is that these action tags are used on descriptive text fields in which the respondent is informed that they cannot continue due to some reason. For example, a user could create a descriptive text field that shows a warning message such as "You appear to have missed some questions!", and use branching logic to display this field if any of the required fields on the page are empty.
@@ -97,7 +99,7 @@ This is my first attempt at a REDCap External Module, and I borrowed heavily fro
 
 If you use this external module for a project that generates a research output, please cite this software in addition to [citing REDCap](https://projectredcap.org/resources/citations/) itself. You can do so using the APA referencing style as below:
 
-> Wilson, A. (2021). HIDESUBMIT Action Tags (Version 3.0.1) [Computer software]. https://github.com/jangari/redcap_hidesubmit
+> Wilson, A. (2021). HIDESUBMIT Action Tags [Computer software]. https://github.com/jangari/redcap_hidesubmit https://doi.org/10.5281/zenodo.5728675
 
 Or by adding this reference to your BibTeX database:
 
@@ -106,9 +108,9 @@ Or by adding this reference to your BibTeX database:
 author = {Wilson, Aidan},
 title = {{HIDESUBMIT Action Tags}},
 url = {https://github.com/jangari/redcap_hidesubmit},
-version = {3.0.1},
 year = {2021}
 month = {7},
+doi = {10.5281/zenodo.5728675}
 }
 ```
 
@@ -123,3 +125,5 @@ These instructions are also available in [GitHub]( https://github.com/jangari/re
 | v2.1.0  | Adds documentation to Action Tag dialogue. Adds support for hiding survey repeat button.              |
 | v3.0.0  | Adds support for distinguishing between submit and new instance buttons, and thus 6 more action tags. |
 | v3.0.1  | Performance improvement. Buttons are all hidden immediately, and reshown if needed.                   |
+| v3.0.2  | Added instructions for citing this repository                                                         |
+

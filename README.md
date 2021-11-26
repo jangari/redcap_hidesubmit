@@ -93,6 +93,27 @@ When the number of instances matches the desired number the repeat button is hid
 
 This is my first attempt at a REDCap External Module, and I borrowed heavily from other developers including Andy Martin, Ekin Tertemiz, Günther Rezniczek, as well as an earlier hook by Bob Gorczyca. I also drew on help with JavaScript from Luke Stevens, who also suggested the general design of this module. I also used Luke's code to augment the action tag help dialogue on designer pages (see [here](https://github.com/lsgs/redcap-date-validation-action-tags/blob/2d0cff6ad23f278d47decfcffe6478af212e6992/DateValidationActionTags.php#L36)), after a suggestion from Dan Foley.
 
+## Citation
+
+If you use this external module for a project that generates a research output, please cite this software in addition to [citing REDCap](https://projectredcap.org/resources/citations/) itself. You can do so using the APA referencing style as below:
+
+> Wilson, A. (2021). HIDESUBMIT Action Tags (Version 3.0.1) [Computer software]. https://github.com/jangari/redcap_hidesubmit
+
+Or by adding this reference to your BibTeX database:
+
+```bibtex
+@software{Wilson_HIDESUBMIT_Action_Tags_2021,
+author = {Wilson, Aidan},
+title = {{HIDESUBMIT Action Tags}},
+url = {https://github.com/jangari/redcap_hidesubmit},
+version = {3.0.1},
+year = {2021}
+month = {7},
+}
+```
+
+These instructions are also available in [GitHub]( https://github.com/jangari/redcap_hidesubmit) under 'Cite This Repository'.
+
 ## Changelog
 
 | Version | Description                                                                                           |

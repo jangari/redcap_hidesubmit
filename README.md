@@ -1,6 +1,6 @@
 # HIDESUBMIT Action Tags
 
-<a href="https://doi.org/10.5281/zenodo.5728675"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5728675.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.5728676"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5728676.svg" alt="DOI"></a>
 
 This REDCap External Module allows users to conditionally hide various Submit/Save/Next instance buttons on surveys and/or data entry forms using Action Tags and branching logic.
 

@@ -7,7 +7,7 @@
         "redcap_data_entry_form_top",
         "redcap_every_page_before_render"
     ],
-    "framework-version": 6,
+    "framework-version": 8,
     "authors": [
         {
             "name": "Aidan Wilson",
@@ -15,7 +15,4 @@
             "institution": "Intersect Australia"
         }
     ],
-    "compatibility": {
-        "redcap-version-min": "10.4.1"
-    }
 }

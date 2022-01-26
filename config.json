@@ -14,5 +14,8 @@
             "email": "aidan.wilson@intersect.org.au",
             "institution": "Intersect Australia"
         }
-    ]
+    ],
+    "compatibility": {
+        "redcap-version-min": "11.1.1"
+    }
 }

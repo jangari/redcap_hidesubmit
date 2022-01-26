@@ -19,12 +19,12 @@ $(document).ready(function(){
             // if any of the fields in the targetFields array is visible
             hideSubmit = 0;
             hideRepeat = 0;
-            hideSubmitFields.forEach(field => {
+            hideSubmitFields.forEach(function(field) {
                 if ($('#' + field + '-tr').is(':visible')) {
                     hideSubmit += 1;
                 };
             });
-            hideRepeatFields.forEach(field => {
+            hideRepeatFields.forEach(function(field) {
                 if ($('#' + field + '-tr').is(':visible')) {
                     hideRepeat += 1;
                 }
@@ -64,7 +64,7 @@ $(document).ready(function(){
         // Start observing the target node for attribute mutations 
         // Do for each node if it is on the current page.
         targetFields = hideSubmitFields.concat(hideRepeatFields);
-        targetFields.forEach(field => {
+        targetFields.forEach(function(field) {
             const node = document.getElementById(field+'-tr');
             if (node){
                 observer.observe(node, {attributes: true});

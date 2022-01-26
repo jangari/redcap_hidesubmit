@@ -126,4 +126,4 @@ These instructions are also available in [GitHub]( https://github.com/jangari/re
 | v3.0.0  | Adds support for distinguishing between submit and new instance buttons, and thus 6 more action tags. |
 | v3.0.1  | Performance improvement. Buttons are all hidden immediately, and reshown if needed.                   |
 | v3.0.2  | Added instructions for citing this repository                                                         |
-
+| v3.0.3  | Bug fix: changed arrow functions to inline callback functions for backwards compatibility with Internet Explorer |

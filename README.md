@@ -127,3 +127,4 @@ These instructions are also available in [GitHub]( https://github.com/jangari/re
 | v3.0.1  | Performance improvement. Buttons are all hidden immediately, and reshown if needed.                   |
 | v3.0.2  | Added instructions for citing this repository                                                         |
 | v3.0.3  | Bug fix: changed arrow functions to inline callback functions for backwards compatibility with Internet Explorer |
+| v3.0.4  | Includes JavaScript code inline rather than sourced files, for better compatibility with various firewall options |

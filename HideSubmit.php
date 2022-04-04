@@ -70,6 +70,7 @@ public function redcap_every_page_before_render($project_id) {
 
         foreach ($hideSubmitTags as $tag){
             $fields = $this->getTags($tag);
+            if (empty($fields)) continue;
             $fields = array_keys($fields[$tag]);
             $hideSubmitFields = array_merge((array)$hideSubmitFields,(array)$fields); 
         };
@@ -83,6 +84,7 @@ public function redcap_every_page_before_render($project_id) {
 
         foreach ($hideRepeatTags as $tag){
             $fields = $this->getTags($tag);
+            if (empty($fields)) continue;
             $fields = array_keys($fields[$tag]);
             $hideRepeatFields = array_merge((array)$hideRepeatFields,(array)$fields); 
         };
@@ -170,6 +172,7 @@ public function redcap_every_page_before_render($project_id) {
 
         foreach ($hideSubmitTags as $tag){
             $fields = $this->getTags($tag);
+            if (empty($fields)) continue;
             $fields = array_keys($fields[$tag]);
             $hideSubmitFields = array_merge((array)$hideSubmitFields,(array)$fields); 
         };
@@ -183,6 +186,7 @@ public function redcap_every_page_before_render($project_id) {
 
         foreach ($hideRepeatTags as $tag){
             $fields = $this->getTags($tag);
+            if (empty($fields)) continue;
             $fields = array_keys($fields[$tag]);
             $hideRepeatFields = array_merge((array)$hideRepeatFields,(array)$fields); 
         };

@@ -1,6 +1,6 @@
 # HIDESUBMIT Action Tags
 
-<a href="https://doi.org/10.5281/zenodo.5728676"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5728676.svg" alt="DOI"></a>
+[![DOI](https://zenodo.org/badge/389585150.svg)](https://zenodo.org/badge/latestdoi/389585150)
 
 This REDCap External Module allows users to conditionally hide various Submit/Save/Next instance buttons on surveys and/or data entry forms using Action Tags and branching logic.
 
@@ -128,3 +128,4 @@ These instructions are also available in [GitHub]( https://github.com/jangari/re
 | v3.0.2  | Added instructions for citing this repository                                                         |
 | v3.0.3  | Bug fix: changed arrow functions to inline callback functions for backwards compatibility with Internet Explorer |
 | v3.0.4  | Includes JavaScript code inline rather than sourced files, for better compatibility with various firewall options |
+| v3.0.5  | Fixes for compatibility with PHP8, thanks to Luke Stevens                                             |
